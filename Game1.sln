@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GameLibCommon", "GameLibCommon\GameLibCommon.shproj", "{C7401911-DCD1-4E6A-8F4B-BF667F42C461}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameAndroid", "GameAndroid\GameAndroid.csproj", "{6EB6915B-1C94-4CA5-8CEB-9A2532084F10}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		GameLibCommon\GameLibCommon.projitems*{6eb6915b-1c94-4ca5-8ceb-9a2532084f10}*SharedItemsImports = 4
+		GameLibCommon\GameLibCommon.projitems*{c7401911-dcd1-4e6a-8f4b-bf667f42c461}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EB6915B-1C94-4CA5-8CEB-9A2532084F10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB6915B-1C94-4CA5-8CEB-9A2532084F10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EB6915B-1C94-4CA5-8CEB-9A2532084F10}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6EB6915B-1C94-4CA5-8CEB-9A2532084F10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EB6915B-1C94-4CA5-8CEB-9A2532084F10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EB6915B-1C94-4CA5-8CEB-9A2532084F10}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {050E6942-BEB0-4DBB-8620-960D74571E7F}
+	EndGlobalSection
+EndGlobal

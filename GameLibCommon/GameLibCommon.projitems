@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>6efba8a9-a407-4029-bdd0-651d22a87386</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>GameLibCommon</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)GameCommon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Area.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\ConcreteGameObjects\Ball.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\ConcreteGameObjects\Block.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\ConcreteGameObjects\Builder\ObjectOrientation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\ConcreteGameObjects\Builder\WallType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\ConcreteGameObjects\Wall.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\ConcreteGameObjects\Builder\WallBuilder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\GameObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\GameMediator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\GameObjectItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\PhysicsEngine.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+    <None Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Content\ball.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\wallhorizontal.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\wallvertical.png" />
+  </ItemGroup>
+</Project>
