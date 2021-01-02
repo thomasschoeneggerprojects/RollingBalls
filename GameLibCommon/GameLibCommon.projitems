@@ -10,17 +10,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)GameCommon.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Area.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\ConcreteGameObjects\Ball.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\ConcreteGameObjects\Block.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\ConcreteGameObjects\Builder\ObjectOrientation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\ConcreteGameObjects\Builder\WallType.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\ConcreteGameObjects\Wall.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\ConcreteGameObjects\Builder\WallBuilder.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\GameObject.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\GameMediator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\GameObjectItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\PhysicsEngine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\Area.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\ConcreteGameObjects\Ball.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\ConcreteGameObjects\Block.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\ConcreteGameObjects\Builder\ObjectOrientation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\ConcreteGameObjects\Builder\WallType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\ConcreteGameObjects\Wall.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\ConcreteGameObjects\Builder\WallBuilder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\GameObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\GameMediator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\GameObjectItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\Handler\InputHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\Types\SingleBallBalance.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Input\InputDataReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Input\InputInformation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\BaseGameScreen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Menue\Screens\MainMenue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\PhysicsEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
@@ -30,5 +36,8 @@
     <Content Include="$(MSBuildThisFileDirectory)Content\ball.png" />
     <Content Include="$(MSBuildThisFileDirectory)Content\wallhorizontal.png" />
     <Content Include="$(MSBuildThisFileDirectory)Content\wallvertical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)GameSrc\Game\Types\" />
   </ItemGroup>
 </Project>
