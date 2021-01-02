@@ -22,8 +22,8 @@ namespace GameLibCommon.GameSrc.Game
 
         internal abstract void Initialize(Vector2 vector, params GameObjectItem[] loadedGameObjectItems);
 
-        public double DirectionDegree { get; internal set; }
-        public double Speed { get; protected set; }
+        public double DirectionDegree { get; set; }
+        public double Speed { get; set; }
         public Guid Uuid { get; protected set; }
 
         private Vector2 _currentPosition;

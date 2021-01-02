@@ -13,6 +13,7 @@ namespace GameLibCommon.GameSrc.Game
     {
         private List<GameObject> _gameObjects;
         private PhysicsEngine _physicsEngine;
+        private InputHandler _inputHandler;
         private Area _arena;
         private Matrix globalTransformation;
 
@@ -23,6 +24,7 @@ namespace GameLibCommon.GameSrc.Game
             _arena = new Area(width, height);
             _physicsEngine = new PhysicsEngine();
             _gameObjects = new List<GameObject>();
+            _inputHandler = new InputHandler();
         }
 
         internal void Set(params GameObject[] gameObjects)
@@ -49,7 +51,7 @@ namespace GameLibCommon.GameSrc.Game
         private void HandleInput(List<GameObject> gameObjects, InputInformation inputInformation)
         {
             _inputInformation = inputInformation;
-            InputHandler.Handle(gameObjects, inputInformation);
+            _inputHandler.Handle(gameObjects, inputInformation);
         }
 
         public void DrawScreen(SpriteBatch spriteBatch)
