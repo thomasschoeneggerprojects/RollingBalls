@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework.Input;
 
 namespace GameAndroid
 {
-    // test
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
