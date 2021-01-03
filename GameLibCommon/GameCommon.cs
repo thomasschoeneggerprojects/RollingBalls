@@ -17,13 +17,11 @@ namespace GameLibCommon
     public class GameCommon : Game
     {
         private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
 
         private GameScreenContext _gameScreenContext;
 
         private IInputDataProvider _inputDataProvider;
         private ScreenSizeInformation _screenSizeInformation;
-        //private ScreenDescription _screenDescription;
 
         public GameCommon()
         {
@@ -37,8 +35,6 @@ namespace GameLibCommon
             _screenSizeInformation = ScreenSizeCalculator
                 .Calculate(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
 
-            //_screenDescription = GlobalScreenDescriptionCreator.CreateMainScreen(_screenSizeInformation);
-
             _inputDataProvider = new InputDataReader();
             base.Initialize();
         }
@@ -46,18 +42,15 @@ namespace GameLibCommon
         protected override void LoadContent()
         {
             _gameScreenContext = new GameScreenContext(GraphicsDevice, Content, _screenSizeInformation);
-            //_gameScreen.LoadContent(GraphicsDevice, Content, _screenDescription);
         }
 
         protected override void Update(GameTime gameTime)
         {
             var currentInputInfo = _inputDataProvider.Update();
 
-
             _gameScreenContext.Update(gameTime, currentInputInfo);
             base.Update(gameTime);
         }
-
 
         protected override void Draw(GameTime gameTime)
         {

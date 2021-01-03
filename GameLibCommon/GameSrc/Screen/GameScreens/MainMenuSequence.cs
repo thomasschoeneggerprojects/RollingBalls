@@ -16,10 +16,6 @@ namespace GameLibCommon.GameSrc.Game.GameScreens
 {
     internal class MainMenuSequence : GameLevelScreenSequenceExecutionBase
     {
-        private SpriteBatch _spriteBatch;
-
-        private GameMediator _gameMediator;
-
         public override void LoadContent(GraphicsDevice graphicsDevice, ContentManager contentManager,
             ScreenSequenceDescription screenSequenceDescription)
         {
@@ -35,6 +31,5 @@ namespace GameLibCommon.GameSrc.Game.GameScreens
         {
             base.Draw(gameTime, graphicsDevice);
         }
-
     }
 }

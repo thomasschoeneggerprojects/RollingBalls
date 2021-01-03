@@ -19,7 +19,8 @@ namespace GameLibCommon.GameSrc.Screen.GameScreens.SubScreens
 
         private GameMediator _gameMediator;
 
-        public virtual void LoadContent(GraphicsDevice graphicsDevice, ContentManager contentManager, ScreenDescription screenDescription)
+        public virtual void LoadContent(GraphicsDevice graphicsDevice, 
+            ContentManager contentManager, ScreenDescription screenDescription)
         {
             ExecutionState = InnerExecutionState.INIT;
             var width = (int)screenDescription.ScreenSizeInformation.WidhtInnerScreen;
@@ -41,8 +42,12 @@ namespace GameLibCommon.GameSrc.Screen.GameScreens.SubScreens
                 gameObjects.Add(obj);
             }
 
+            var background = contentManager.Load<Texture2D>(screenDescription.AssetNameBackground);
+            
             _gameMediator = new GameMediator(screenDescription.ScreenSizeInformation);
             _gameMediator.Set(gameObjects.ToArray());
+
+            _gameMediator.SetBackground(background);
 
             // TODO remove after test
             _gameMediator.Set(contentManager.Load<SpriteFont>("Labels/LabelLarge"));
@@ -52,7 +57,6 @@ namespace GameLibCommon.GameSrc.Screen.GameScreens.SubScreens
         {
             ExecutionState = InnerExecutionState.RUN;
             _gameMediator.Refresh(_spriteBatch, inputInformation);
-
         }
 
         public virtual void Draw(GameTime gameTime, GraphicsDevice graphicsDevice)

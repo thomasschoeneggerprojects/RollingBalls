@@ -18,14 +18,16 @@ namespace GameLibCommon.GameSrc.State
             if (screenDescription.Id.Equals(WellKnownGameScreenExecutions.MENUE_MAIN_SCREEN))
             {
                 var item = new MainMenue();
-                var screen = GlobalScreenDescriptionCreator.CreateMainScreen(screenDescription.ScreenSizeInformation);
+                var screen = GlobalScreenDescriptionCreator
+                    .CreateMainScreen(screenDescription.ScreenSizeInformation);
                 item.LoadContent(graphicsDevice, contentManager, screen);
                 return item;
             }
             else if (screenDescription.Id.Equals(WellKnownGameScreenExecutions.RUNNING_GAME_BALANCE_SCREEN))
             {
                 var item = new BallBallanceLevel();
-                var screen = GlobalScreenDescriptionCreator.CreateTestLevelScreen(screenDescription.ScreenSizeInformation);
+                var screen = GlobalScreenDescriptionCreator
+                    .CreateTestLevelScreen(screenDescription.ScreenSizeInformation);
                 item.LoadContent(graphicsDevice, contentManager, screen);
                 return item;
             }

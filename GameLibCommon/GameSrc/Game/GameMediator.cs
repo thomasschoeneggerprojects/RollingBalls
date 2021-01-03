@@ -17,7 +17,7 @@ namespace GameLibCommon.GameSrc.Game
         private InputHandler _inputHandler;
         private Area _arena;
         private ScreenSizeInformation _screenSizeInformation;
-
+        private Texture2D _background;
 
         public GameMediator(ScreenSizeInformation screenSizeInformation)
         {
@@ -32,6 +32,11 @@ namespace GameLibCommon.GameSrc.Game
         internal void Set(params GameObject[] gameObjects)
         {
             _gameObjects.AddRange(gameObjects);
+        }
+        
+        internal void SetBackground(Texture2D background)
+        {
+             _background = background;
         }
 
         #region remove after Test
@@ -54,7 +59,7 @@ namespace GameLibCommon.GameSrc.Game
         {
             _inputInformation = inputInformation;
             // !!!!!!!!!!! Comment in after test !!!!!!!!!!!!
-            //_inputHandler.Handle(gameObjects, inputInformation);
+            _inputHandler.Handle(gameObjects, inputInformation);
         }
 
         public void DrawScreen(SpriteBatch spriteBatch)
@@ -70,6 +75,10 @@ namespace GameLibCommon.GameSrc.Game
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(SpriteSortMode.Immediate);
+            
+            spriteBatch.Draw(_background, new Rectangle((int)_screenSizeInformation.OffsetFromOutherScreen.X, 
+                (int)_screenSizeInformation.OffsetFromOutherScreen.Y, 
+                (int)_arena.Width, (int)_arena.Height), Color.White);
 
             foreach (var gameObj in _gameObjects)
             {
@@ -78,16 +87,14 @@ namespace GameLibCommon.GameSrc.Game
                     var position = gameObj.CurrentPosition + item.Offset + _screenSizeInformation.OffsetFromOutherScreen;
                     spriteBatch.Draw(item.Texture, new Rectangle((int)position.X,(int) position.Y, 
                         gameObj.Bounds.Width, gameObj.Bounds.Height),  Color.White);
-
                 }
             }
 
             // TODO remove after test
             spriteBatch.DrawString(_font, $"x:{_inputInformation.Acceleration.X} /y:{_inputInformation.Acceleration.Y} /z:{_inputInformation.Acceleration.Z}"
-                , new Vector2(100, _arena .Height/ 6 * 5), Color.Black);
+                , new Vector2(100, _arena.Height/ 6 * 5), Color.Black);
 
             spriteBatch.End();
-
         }
 
     }

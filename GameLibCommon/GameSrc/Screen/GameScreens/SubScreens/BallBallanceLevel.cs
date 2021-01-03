@@ -12,11 +12,8 @@ namespace GameLibCommon.GameSrc.Screen.GameScreens.SubScreens
 {
     internal class BallBallanceLevel : GameScreenExecutionBase
     {
-        private SpriteBatch _spriteBatch;
-
-        private GameMediator _gameMediator;
-
-        public override void LoadContent(GraphicsDevice graphicsDevice, ContentManager contentManager, ScreenDescription screenDescription)
+        public override void LoadContent(GraphicsDevice graphicsDevice, 
+            ContentManager contentManager, ScreenDescription screenDescription)
         {
             base.LoadContent(graphicsDevice, contentManager, screenDescription);
         }

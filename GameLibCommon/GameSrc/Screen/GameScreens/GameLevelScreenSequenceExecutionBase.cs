@@ -20,7 +20,9 @@ namespace GameLibCommon.GameSrc.Screen.GameScreens
 
         int currentScreen = 0;
 
-        public virtual void LoadContent(GraphicsDevice graphicsDevice, ContentManager contentManager, ScreenSequenceDescription screenSequenceDescription)
+        public virtual void LoadContent(GraphicsDevice graphicsDevice, 
+            ContentManager contentManager, 
+            ScreenSequenceDescription screenSequenceDescription)
         {
             ExecutionState = InnerExecutionState.INIT;
             currentScreen = 0;

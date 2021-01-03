@@ -103,6 +103,7 @@ namespace GameLibCommon.GameSrc.ConcreteGameObjects
                 case GameObjectType.HOLE:
                     obj = new Wall();
                     break;
+               
                 default:
                     break;
             }
