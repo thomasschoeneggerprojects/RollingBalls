@@ -9,11 +9,11 @@ using System.Text;
 
 namespace GameLibCommon.GameSrc
 {
-    internal class GlobalScreenCreator
+    internal class GlobalScreenDescriptionCreator
     {
         internal static ScreenDescription CreateMainScreen(ScreenSizeInformation info)
         {
-            ScreenDescription mainscreen = ScreenDescription.Create( info, null, "RollingBallsMainScreen", TimeSpan.FromDays(360));
+            ScreenDescription mainscreen = ScreenDescription.Create( info, null, "RollingBallsMainScreen", WellKnownGameScreenExecutions.MENUE_MAIN_SCREEN, TimeSpan.FromDays(360));
 
             return mainscreen;
         }
@@ -101,7 +101,7 @@ namespace GameLibCommon.GameSrc
                 }
             };
 
-            ScreenDescription testscreen = ScreenDescription.Create(info, descriptions, "RollingBallsMainScreen", TimeSpan.FromDays(1));
+            ScreenDescription testscreen = ScreenDescription.Create(info, descriptions, "BackgroundMamor", WellKnownGameScreenExecutions.RUNNING_GAME_BALANCE_SCREEN, TimeSpan.FromDays(1));
 
             return testscreen;
         }

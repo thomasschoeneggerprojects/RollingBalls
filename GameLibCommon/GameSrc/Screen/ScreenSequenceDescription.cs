@@ -1,6 +1,7 @@
 ﻿using GameLibCommon.GameSrc.Game;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace GameLibCommon.GameSrc.Screen
@@ -14,9 +15,9 @@ namespace GameLibCommon.GameSrc.Screen
 
         internal List<ScreenDescription> ScreenDescriptions { get; private set; }
 
-        internal static ScreenSequenceDescription Create(List<ScreenDescription> descriptions)
+        internal static ScreenSequenceDescription Create(params ScreenDescription[] descriptions)
         {
-            return new ScreenSequenceDescription(descriptions);
+            return new ScreenSequenceDescription(descriptions.ToList());
         }
 
     }

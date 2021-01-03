@@ -1,24 +1,29 @@
-﻿using GameLibCommon.GameSrc.Game;
+﻿
+using GameLibCommon.GameSrc.ConcreteGameObjects;
 using GameLibCommon.GameSrc.Input;
+using GameLibCommon.GameSrc.Screen;
+using GameLibCommon.GameSrc.Screen.GameScreens;
 using GameLibCommon.GameSrc.State;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
-namespace GameLibCommon.GameSrc.Screen.GameScreens.SubScreens
+namespace GameLibCommon.GameSrc.Game.GameScreens
 {
-    internal class BallBallanceLevel : GameScreenExecutionBase
+    internal class SingleBallBalanceGame : GameLevelScreenSequenceExecutionBase
     {
         private SpriteBatch _spriteBatch;
 
         private GameMediator _gameMediator;
 
-        public override void LoadContent(GraphicsDevice graphicsDevice, ContentManager contentManager, ScreenDescription screenDescription)
+        public override void LoadContent(GraphicsDevice graphicsDevice, ContentManager contentManager,
+            ScreenSequenceDescription screenSequenceDescription)
         {
-            base.LoadContent(graphicsDevice, contentManager, screenDescription);
+            base.LoadContent(graphicsDevice, contentManager, screenSequenceDescription);
         }
 
         public override void Update(GameTime gameTime, InputInformation inputInformation)
@@ -30,5 +35,6 @@ namespace GameLibCommon.GameSrc.Screen.GameScreens.SubScreens
         {
             base.Draw(gameTime, graphicsDevice);
         }
+
     }
 }

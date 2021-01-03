@@ -13,7 +13,7 @@ namespace GameLibCommon.GameSrc.Screen
     {
         private SpriteBatch _spriteBatch;
 
-        private Texture2D _backgroundMain;
+        private Texture2D _background;
         private SpriteFont _font;
 
         private int _screenWidth;
@@ -21,8 +21,7 @@ namespace GameLibCommon.GameSrc.Screen
 
         public InnerExecutionState ExecutionState { get; set; }
 
-        private const int WALL_THICKNESS = 20;
-        void IGameScreenExecution.LoadContent(GraphicsDevice graphicsDevice, ContentManager contentManager, 
+        public void LoadContent(GraphicsDevice graphicsDevice, ContentManager contentManager, 
             ScreenDescription screenDescription)
         {
             ExecutionState = InnerExecutionState.INIT;
@@ -30,30 +29,28 @@ namespace GameLibCommon.GameSrc.Screen
             _screenWidth = (int)screenDescription.ScreenSizeInformation.WidhtInnerScreen;
             _screenHeight = (int)screenDescription.ScreenSizeInformation.HeightInnerScreen;
 
-            //graphicsDevice.Viewport = new Viewport(0, 0, _screenWidth, _screenHeight);
-
             _spriteBatch = new SpriteBatch(graphicsDevice);
 
-            _backgroundMain = contentManager.Load<Texture2D>("RollingBallsMainScreen");
+            _background = contentManager.Load<Texture2D>(screenDescription.AssetNameBackground);
 
             _font = contentManager.Load<SpriteFont>("Labels/LabelLarge");
         }
 
         private InputInformation _inputInformation;
 
-        void IGameScreenExecution.Update(GameTime gameTime, InputInformation inputInformation)
+        public void Update(GameTime gameTime, InputInformation inputInformation)
         {
             ExecutionState = InnerExecutionState.RUN;
             _inputInformation = inputInformation;
         }
 
-        void IGameScreenExecution.Draw(GameTime gameTime, GraphicsDevice graphicsDevice)
+        public void  Draw(GameTime gameTime, GraphicsDevice graphicsDevice)
         {
             graphicsDevice.Clear(Color.Wheat);
 
             _spriteBatch.Begin(SpriteSortMode.Immediate);
 
-            _spriteBatch.Draw(_backgroundMain, new Rectangle(1, 1, _screenWidth, _screenHeight), Color.White);
+            _spriteBatch.Draw(_background, new Rectangle(1, 1, _screenWidth, _screenHeight), Color.White);
 
             DrawCentered(_spriteBatch, _screenWidth, _screenHeight, _inputInformation.Acceleration.X, _inputInformation.Acceleration.Y);
 
@@ -62,9 +59,8 @@ namespace GameLibCommon.GameSrc.Screen
 
         private void DrawCentered(SpriteBatch spriteBatch, int screenWidth, int screenHeight, float x, float y)
         {
-            spriteBatch.DrawString(_font, $"Touch Screen to start {x}/{y}", new Vector2(100, screenHeight/3*2), Color.Black);
+            spriteBatch.DrawString(_font, $"Touch to start {x}/{y}", new Vector2(0, screenHeight/3*2), Color.Black);
         }
 
-       
     }
 }

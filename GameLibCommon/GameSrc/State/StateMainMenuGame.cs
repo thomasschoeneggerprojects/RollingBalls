@@ -3,7 +3,6 @@ using GameLibCommon.GameSrc.Input;
 using GameLibCommon.GameSrc.Screen;
 using GameLibCommon.GameSrc.StateHandling;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -11,9 +10,9 @@ using System.Text;
 
 namespace GameLibCommon.GameSrc.State
 {
-    internal class StateExecuteGame : IGameState
+    internal class StateMainMenuGame : IGameState
     {
-        public StateExecuteGame(GameScreenContext context)
+        public StateMainMenuGame(GameScreenContext context)
         {
             Context = context;
         }
@@ -22,28 +21,33 @@ namespace GameLibCommon.GameSrc.State
 
         IGameScreenSequenceExecution _gameScreenSequenceExecution;
 
-        public void Start()
-        {
-            _gameScreenSequenceExecution = new SingleBallBalanceGame();
-
-            var screenDesc = GlobalScreenDescriptionCreator.CreateTestLevelScreen(Context.ScreenSizeInformation);
-            var screenSequence =ScreenSequenceDescription.Create(screenDesc);
-
-            _gameScreenSequenceExecution.LoadContent(Context.GraphicsDevice, Context.ContentManager, screenSequence);
-        }
-
         public void GoBack()
         {
-            Context.ActivateState(new StateMainMenuGame(Context));
+            // Got to Exit State.
         }
 
         public void Finish()
         {
-            Context.ActivateState(new StateMainMenuGame(Context));
+           
         }
 
+        public void Start()
+        {
+            _gameScreenSequenceExecution = new MainMenuSequence();
+
+            var screenDesc = GlobalScreenDescriptionCreator.CreateMainScreen(Context.ScreenSizeInformation);
+            var screenSequence = ScreenSequenceDescription.Create(screenDesc);
+
+            _gameScreenSequenceExecution.LoadContent(Context.GraphicsDevice, Context.ContentManager, screenSequence);
+        }
+        bool _isInGame = false;
         public void Update(GameTime gameTime, InputInformation inputInformation)
         {
+            if (inputInformation.ScreenTouched && !_isInGame)
+            {
+                Context.ActivateState(new StateExecuteGame(Context));
+            }
+
             _gameScreenSequenceExecution.Update(gameTime, inputInformation);
         }
 
