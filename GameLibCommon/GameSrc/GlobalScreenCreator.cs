@@ -62,7 +62,7 @@ namespace GameLibCommon.GameSrc
                     CurrentPosition = new Vector2(WALL_THICKNESS, 0),
                     Width = height - WALL_THICKNESS - WALL_THICKNESS,
                     Height = WALL_THICKNESS,
-                    ObjectOrientation = ObjectOrientation.Vertical,
+                    ObjectOrientation = ObjectOrientation.Horizontal,
                     Stability = 100000,
                     GameObjectType = GameObjectType.WALL
                 },
@@ -72,7 +72,7 @@ namespace GameLibCommon.GameSrc
                     CurrentPosition = new Vector2(WALL_THICKNESS, height - WALL_THICKNESS),
                     Width = height - WALL_THICKNESS - WALL_THICKNESS,
                     Height = WALL_THICKNESS,
-                    ObjectOrientation = ObjectOrientation.Vertical,
+                    ObjectOrientation = ObjectOrientation.Horizontal,
                     Stability = 100000,
                     GameObjectType = GameObjectType.WALL
                 },
@@ -85,8 +85,20 @@ namespace GameLibCommon.GameSrc
                     ObjectOrientation = ObjectOrientation.Vertical,
                     Stability = 100000,
                     GameObjectType = GameObjectType.WALL
+                },
+                new GameObjectDescription()
+                {
+                    AssetName = "blockredgray",
+                    CurrentPosition = new Vector2(600, 700),
+                    Width = 50,
+                    Height = 50,
+                    ObjectOrientation = ObjectOrientation.Vertical,
+                    Stability = 1000,
+                    GameObjectType = GameObjectType.BLOCK
                 }
             };
+
+
 
             ScreenDescription testscreen = ScreenDescription.Create(info, descriptions, "RollingBallsMainScreen");
 
