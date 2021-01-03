@@ -27,14 +27,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Input\IInputDataProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Input\InputDataReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Input\InputInformation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\BaseGameScreen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\IGameScreenExecution.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Screen\MainMenue.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\PhysicsEngine.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Screen\ScreenDescription.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\ConcreteGameObjects\GameObjectDescription.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Screen\ScreenSizeCalculator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Screen\ScreenSizeInformation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\State\ExecutionState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\State\GameScreenContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\State\IGameState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\State\StateExecuteGame.cs" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />

@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using GameLibCommon.GameSrc.Game;
 using GameLibCommon.GameSrc.Input;
 using GameLibCommon.GameSrc.Game.Handler;
+using GameLibCommon.GameSrc.Screen;
 
 namespace GameLibCommon.GameSrc.Game
 {
@@ -15,13 +16,14 @@ namespace GameLibCommon.GameSrc.Game
         private PhysicsEngine _physicsEngine;
         private InputHandler _inputHandler;
         private Area _arena;
-       // private Matrix globalTransformation;
+        private ScreenSizeInformation _screenSizeInformation;
 
-        
 
-        public GameMediator(int width, int height)
+        public GameMediator(ScreenSizeInformation screenSizeInformation)
         {
-            _arena = new Area(width, height);
+            _screenSizeInformation = screenSizeInformation;
+            _arena = new Area((int)_screenSizeInformation.WidhtInnerScreen, 
+                (int)_screenSizeInformation.HeightInnerScreen);
             _physicsEngine = new PhysicsEngine();
             _gameObjects = new List<GameObject>();
             _inputHandler = new InputHandler();
@@ -51,7 +53,8 @@ namespace GameLibCommon.GameSrc.Game
         private void HandleInput(List<GameObject> gameObjects, InputInformation inputInformation)
         {
             _inputInformation = inputInformation;
-            _inputHandler.Handle(gameObjects, inputInformation);
+            // !!!!!!!!!!! Comment in after test !!!!!!!!!!!!
+            //_inputHandler.Handle(gameObjects, inputInformation);
         }
 
         public void DrawScreen(SpriteBatch spriteBatch)
@@ -67,16 +70,15 @@ namespace GameLibCommon.GameSrc.Game
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(SpriteSortMode.Immediate);
+
             foreach (var gameObj in _gameObjects)
             {
                 foreach (var item in gameObj.GameObjectItems)
                 {
-
-                    var position = gameObj.CurrentPosition + item.Offset;
+                    var position = gameObj.CurrentPosition + item.Offset + _screenSizeInformation.OffsetFromOutherScreen;
                     spriteBatch.Draw(item.Texture, new Rectangle((int)position.X,(int) position.Y, 
                         gameObj.Bounds.Width, gameObj.Bounds.Height),  Color.White);
 
-                    
                 }
             }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,22 +7,26 @@ namespace GameLibCommon.GameSrc.Screen
 {
     internal class ScreenSizeInformation 
     {
-        private ScreenSizeInformation(float width, float height, float scaleFactor)
+        private ScreenSizeInformation(float width, float height, float scaleFactor, Vector2 offset)
         {
-            Widht = width;
-            Height = height;
+            WidhtInnerScreen = width;
+            HeightInnerScreen = height;
             ScaleFactor = scaleFactor;
+            OffsetFromOutherScreen = offset;
         }
 
-        public float Widht { get; }
+        public float WidhtInnerScreen { get; }
 
-        public float Height { get; }
+        public float HeightInnerScreen { get; }
 
         public float ScaleFactor { get; }
 
-        internal static ScreenSizeInformation Create(float width, float height, float scaleFactor)
+        public Vector2 OffsetFromOutherScreen { get; }
+     
+
+        internal static ScreenSizeInformation Create(float width, float height, float scaleFactor, Vector2 offset)
         {
-            return new ScreenSizeInformation(width, height, scaleFactor);
+            return new ScreenSizeInformation(width, height, scaleFactor, offset);
         }
 
     }

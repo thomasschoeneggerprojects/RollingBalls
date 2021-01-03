@@ -21,8 +21,8 @@ namespace GameLibCommon.GameSrc
         internal static ScreenDescription CreateTestLevelScreen(ScreenSizeInformation info)
         {
 
-            var width = (int)info.Widht;
-            var height = (int)info.Height;
+            var width = (int)info.WidhtInnerScreen;
+            var height = (int)info.HeightInnerScreen;
 
             List<GameObjectDescription> descriptions = new List<GameObjectDescription>
             {
@@ -36,6 +36,7 @@ namespace GameLibCommon.GameSrc
                     Stability = 100,
                     GameObjectType = GameObjectType.BALL
                 },
+                // Left
                 new GameObjectDescription()
                 {
                     AssetName = "wallvertical",
@@ -46,6 +47,7 @@ namespace GameLibCommon.GameSrc
                     Stability = 100000,
                     GameObjectType = GameObjectType.WALL
                 },
+                // Right
                 new GameObjectDescription()
                 {
                     AssetName = "wallvertical",
@@ -56,21 +58,23 @@ namespace GameLibCommon.GameSrc
                     Stability = 100000,
                     GameObjectType = GameObjectType.WALL
                 },
+                // top
                 new GameObjectDescription()
                 {
                     AssetName = "wallhorizontal",
                     CurrentPosition = new Vector2(WALL_THICKNESS, 0),
-                    Width = height - WALL_THICKNESS - WALL_THICKNESS,
+                    Width = width - WALL_THICKNESS - WALL_THICKNESS,
                     Height = WALL_THICKNESS,
                     ObjectOrientation = ObjectOrientation.Horizontal,
                     Stability = 100000,
                     GameObjectType = GameObjectType.WALL
                 },
+                // Bottom
                 new GameObjectDescription()
                 {
                     AssetName = "wallhorizontal",
                     CurrentPosition = new Vector2(WALL_THICKNESS, height - WALL_THICKNESS),
-                    Width = height - WALL_THICKNESS - WALL_THICKNESS,
+                    Width = width - WALL_THICKNESS - WALL_THICKNESS,
                     Height = WALL_THICKNESS,
                     ObjectOrientation = ObjectOrientation.Horizontal,
                     Stability = 100000,

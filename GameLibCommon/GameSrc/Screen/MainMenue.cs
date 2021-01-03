@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using GameLibCommon.GameSrc.Input;
+using GameLibCommon.GameSrc.State;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace GameLibCommon.GameSrc.Screen
 {
-    public class MainMenue : IGameScreen
+    internal class MainMenue : IGameScreenExecution
     {
         private SpriteBatch _spriteBatch;
 
@@ -18,14 +19,18 @@ namespace GameLibCommon.GameSrc.Screen
         private int _screenWidth;
         private int _screenHeight;
 
+        public ExecutionState ExecutionState { get; set; }
+
         private const int WALL_THICKNESS = 20;
-        void IGameScreen.LoadContent(GraphicsDevice graphicsDevice, ContentManager contentManager, 
+        void IGameScreenExecution.LoadContent(GraphicsDevice graphicsDevice, ContentManager contentManager, 
             ScreenDescription screenDescription)
         {
-            _screenWidth = (int)screenDescription.ScreenSizeInformation.Widht;
-            _screenHeight = (int)screenDescription.ScreenSizeInformation.Height;
+            ExecutionState = ExecutionState.INIT;
 
-            graphicsDevice.Viewport = new Viewport(0, 0, _screenWidth, _screenHeight);
+            _screenWidth = (int)screenDescription.ScreenSizeInformation.WidhtInnerScreen;
+            _screenHeight = (int)screenDescription.ScreenSizeInformation.HeightInnerScreen;
+
+            //graphicsDevice.Viewport = new Viewport(0, 0, _screenWidth, _screenHeight);
 
             _spriteBatch = new SpriteBatch(graphicsDevice);
 
@@ -35,12 +40,14 @@ namespace GameLibCommon.GameSrc.Screen
         }
 
         private InputInformation _inputInformation;
-        void IGameScreen.Update(GameTime gameTime, InputInformation inputInformation)
+
+        void IGameScreenExecution.Update(GameTime gameTime, InputInformation inputInformation)
         {
+            ExecutionState = ExecutionState.RUN;
             _inputInformation = inputInformation;
         }
 
-        void IGameScreen.Draw(GameTime gameTime, GraphicsDevice graphicsDevice)
+        void IGameScreenExecution.Draw(GameTime gameTime, GraphicsDevice graphicsDevice)
         {
             graphicsDevice.Clear(Color.Wheat);
 

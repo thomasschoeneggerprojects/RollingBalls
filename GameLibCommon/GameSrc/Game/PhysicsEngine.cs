@@ -6,7 +6,6 @@ namespace GameLibCommon.GameSrc.Game
 {
     internal class PhysicsEngine
     {
-
         public List<GameObject> CalculatePhysics(List<GameObject> gameObjects, Area area)
         {
             CalculateCollision(gameObjects, area);
@@ -45,9 +44,6 @@ namespace GameLibCommon.GameSrc.Game
 
         }
 
-
-
-
         public double CalculateReDirection(double directionmovingObject, double collitionObjectDirection )
         {
             double originalDifference = GetDifferenceAngles(directionmovingObject, collitionObjectDirection);
@@ -56,10 +52,11 @@ namespace GameLibCommon.GameSrc.Game
 
             double inverseDifference = GetDifferenceAngles(directionmovingObject, collitionObjectDirection + 180);
 
-            if (originalDifference < 5 || inverseDifference < 5)
-            {
-                return AddAngleDirection(directionmovingObject, 180);
-            }
+            // TODO Find better solution
+            //if (originalDifference < 5 || inverseDifference < 5)
+            //{
+            //    return AddAngleDirection(directionmovingObject, 180);
+            //}
 
             double commingDirectionMultFactor = 1;
 
@@ -76,10 +73,12 @@ namespace GameLibCommon.GameSrc.Game
                 {
                     flowDirectionMultFactor = -1;
                 }
-                return AddAngleDirection(inverseObjectDirection, inverseDifference * commingDirectionMultFactor * flowDirectionMultFactor);
+                return AddAngleDirection(inverseObjectDirection, 
+                    inverseDifference * commingDirectionMultFactor * flowDirectionMultFactor);
             }
 
-            return AddAngleDirection(collitionObjectDirection, originalDifference * commingDirectionMultFactor);
+            return AddAngleDirection(collitionObjectDirection, 
+                originalDifference * commingDirectionMultFactor);
         }
 
         public double AddAngleDirection(double currentDirection, double additionalDifference)

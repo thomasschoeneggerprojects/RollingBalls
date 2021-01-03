@@ -18,7 +18,7 @@ namespace GameLibCommon
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        private IGameScreen _gameScreen;
+        private IGameScreenExecution _gameScreen;
 
         private IInputDataProvider _inputDataProvider;
         private ScreenSizeInformation _screenSizeInformation;
