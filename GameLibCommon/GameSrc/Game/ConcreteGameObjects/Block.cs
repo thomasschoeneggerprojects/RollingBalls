@@ -11,7 +11,7 @@ namespace GameLibCommon.GameSrc.ConcreteGameObjects
     {
         public Block()
         {
-            TextureDescriptions.Add("blockredgray", typeof(Texture2D));
+            AssetName ="blockredgray";
         }
 
         internal override void Initialize(Vector2 currentPosition, params GameObjectItem[] loadedGameObjectItems)

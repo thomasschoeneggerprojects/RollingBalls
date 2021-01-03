@@ -6,9 +6,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameLibCommon.GameSrc.Menue.Screens
+namespace GameLibCommon.GameSrc.Screen
 {
-    public class MainMenue : BaseGameScreen
+    public class MainMenue : IGameScreen
     {
         private SpriteBatch _spriteBatch;
 
@@ -19,10 +19,11 @@ namespace GameLibCommon.GameSrc.Menue.Screens
         private int _screenHeight;
 
         private const int WALL_THICKNESS = 20;
-        internal override void LoadContent(GraphicsDevice graphicsDevice, ContentManager contentManager)
+        void IGameScreen.LoadContent(GraphicsDevice graphicsDevice, ContentManager contentManager, 
+            ScreenDescription screenDescription)
         {
-            _screenWidth = graphicsDevice.Viewport.Width;
-            _screenHeight = graphicsDevice.Viewport.Height;
+            _screenWidth = (int)screenDescription.ScreenSizeInformation.Widht;
+            _screenHeight = (int)screenDescription.ScreenSizeInformation.Height;
 
             graphicsDevice.Viewport = new Viewport(0, 0, _screenWidth, _screenHeight);
 
@@ -31,16 +32,15 @@ namespace GameLibCommon.GameSrc.Menue.Screens
             _backgroundMain = contentManager.Load<Texture2D>("RollingBallsMainScreen");
 
             _font = contentManager.Load<SpriteFont>("Labels/LabelLarge");
-
         }
 
         private InputInformation _inputInformation;
-        internal override void Update(GameTime gameTime, InputInformation inputInformation)
+        void IGameScreen.Update(GameTime gameTime, InputInformation inputInformation)
         {
             _inputInformation = inputInformation;
         }
 
-        internal override void Draw(GameTime gameTime, GraphicsDevice graphicsDevice)
+        void IGameScreen.Draw(GameTime gameTime, GraphicsDevice graphicsDevice)
         {
             graphicsDevice.Clear(Color.Wheat);
 
@@ -57,5 +57,7 @@ namespace GameLibCommon.GameSrc.Menue.Screens
         {
             spriteBatch.DrawString(_font, $"Touch Screen to start {x}/{y}", new Vector2(100, screenHeight/3*2), Color.Black);
         }
+
+       
     }
 }

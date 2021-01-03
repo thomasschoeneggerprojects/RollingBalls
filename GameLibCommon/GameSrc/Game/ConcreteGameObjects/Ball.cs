@@ -11,7 +11,7 @@ namespace GameLibCommon.GameSrc.ConcreteGameObjects
     {
         public Ball()
         {
-            TextureDescriptions.Add("ball", typeof(Texture2D));
+            AssetName = "ballblue";
         }
 
         internal override void Initialize(Vector2 currentPosition, params GameObjectItem[] loadedGameObjectItems)

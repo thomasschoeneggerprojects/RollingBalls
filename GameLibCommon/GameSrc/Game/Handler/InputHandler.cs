@@ -9,8 +9,8 @@ namespace GameLibCommon.GameSrc.Game.Handler
     {
         internal void Handle(List<GameObject> gameObjects, InputInformation inputInformation)
         {
-            double newDirection = calcNewAngle(inputInformation);
-            double newAccel = calcNewAccelaration(inputInformation);
+            double newDirection = CalcNewAngle(inputInformation);
+            double newAccel = CalcNewAccelaration(inputInformation);
 
             foreach(GameObject gameObject in gameObjects)
             {
@@ -24,12 +24,12 @@ namespace GameLibCommon.GameSrc.Game.Handler
             }
         }
 
-        private double calcNewAngle(InputInformation inputInformation)
+        private double CalcNewAngle(InputInformation inputInformation)
         {
             return inputInformation.Acceleration.X;
         }
 
-        private double calcNewAccelaration(InputInformation inputInformation)
+        private double CalcNewAccelaration(InputInformation inputInformation)
         {
             return inputInformation.Acceleration.Y;
         }

@@ -15,7 +15,7 @@ namespace GameLibCommon.GameSrc.Game
         private PhysicsEngine _physicsEngine;
         private InputHandler _inputHandler;
         private Area _arena;
-        private Matrix globalTransformation;
+       // private Matrix globalTransformation;
 
         
 
