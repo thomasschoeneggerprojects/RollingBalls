@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GameLibCommon.GameSrc.State
 {
-    internal enum ExecutionState
+    internal enum InnerExecutionState
     {
         INIT, RUN, FINISH
     }

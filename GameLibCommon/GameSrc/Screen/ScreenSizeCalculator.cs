@@ -22,6 +22,7 @@ namespace GameLibCommon.GameSrc.Screen
                 return CreateScreenInfo(WIDHT_SMALL, HEIGHT_SMALL, SCALE_FACTOR_LARGE,
                     CalculateOffset(width, height, SCALE_FACTOR_LARGE));
             }
+
             if (width / WIDHT_SMALL > SCALE_FACTOR_MEDIUM && height / HEIGHT_SMALL > SCALE_FACTOR_MEDIUM)
             {
                 return CreateScreenInfo(WIDHT_SMALL, HEIGHT_SMALL, SCALE_FACTOR_MEDIUM,

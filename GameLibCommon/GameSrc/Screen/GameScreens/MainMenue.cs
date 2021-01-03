@@ -19,13 +19,13 @@ namespace GameLibCommon.GameSrc.Screen
         private int _screenWidth;
         private int _screenHeight;
 
-        public ExecutionState ExecutionState { get; set; }
+        public InnerExecutionState ExecutionState { get; set; }
 
         private const int WALL_THICKNESS = 20;
         void IGameScreenExecution.LoadContent(GraphicsDevice graphicsDevice, ContentManager contentManager, 
             ScreenDescription screenDescription)
         {
-            ExecutionState = ExecutionState.INIT;
+            ExecutionState = InnerExecutionState.INIT;
 
             _screenWidth = (int)screenDescription.ScreenSizeInformation.WidhtInnerScreen;
             _screenHeight = (int)screenDescription.ScreenSizeInformation.HeightInnerScreen;
@@ -43,7 +43,7 @@ namespace GameLibCommon.GameSrc.Screen
 
         void IGameScreenExecution.Update(GameTime gameTime, InputInformation inputInformation)
         {
-            ExecutionState = ExecutionState.RUN;
+            ExecutionState = InnerExecutionState.RUN;
             _inputInformation = inputInformation;
         }
 

@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GameLibCommon.GameSrc.Game.Type
+namespace GameLibCommon.GameSrc.Game.GameScreens
 {
     internal class SingleBallBalanceGame : IGameScreenExecution
     {
@@ -21,17 +21,15 @@ namespace GameLibCommon.GameSrc.Game.Type
 
         private const int WALL_THICKNESS = 20;
 
-        public ExecutionState ExecutionState { get; set; }
+        public InnerExecutionState ExecutionState { get; set; }
 
         void IGameScreenExecution.LoadContent(GraphicsDevice graphicsDevice, ContentManager contentManager, 
             ScreenDescription screenDescription)
         {
-            ExecutionState = ExecutionState.INIT;
+            ExecutionState = InnerExecutionState.INIT;
 
             var width = (int)screenDescription.ScreenSizeInformation.WidhtInnerScreen;
             var height = (int)screenDescription.ScreenSizeInformation.HeightInnerScreen;
-
-            //graphicsDevice.Viewport = new Viewport((int)screenDescription.ScreenSizeInformation.OffsetFromOutherScreen.X, (int)screenDescription.ScreenSizeInformation.OffsetFromOutherScreen.Y, width, height);
 
             _spriteBatch = new SpriteBatch(graphicsDevice);
             
@@ -58,7 +56,7 @@ namespace GameLibCommon.GameSrc.Game.Type
 
         void IGameScreenExecution.Update(GameTime gameTime, InputInformation inputInformation)
         {
-            ExecutionState = ExecutionState.RUN;
+            ExecutionState = InnerExecutionState.RUN;
             _gameMediator.Refresh(_spriteBatch, inputInformation);
 
             HandleGameState(gameTime, inputInformation);

@@ -13,14 +13,13 @@ namespace GameLibCommon.GameSrc
     {
         internal static ScreenDescription CreateMainScreen(ScreenSizeInformation info)
         {
-            ScreenDescription mainscreen = ScreenDescription.Create( info, null, "RollingBallsMainScreen");
+            ScreenDescription mainscreen = ScreenDescription.Create( info, null, "RollingBallsMainScreen", TimeSpan.FromDays(360));
 
             return mainscreen;
         }
         private const int WALL_THICKNESS = 10;
         internal static ScreenDescription CreateTestLevelScreen(ScreenSizeInformation info)
         {
-
             var width = (int)info.WidhtInnerScreen;
             var height = (int)info.HeightInnerScreen;
 
@@ -102,9 +101,7 @@ namespace GameLibCommon.GameSrc
                 }
             };
 
-
-
-            ScreenDescription testscreen = ScreenDescription.Create(info, descriptions, "RollingBallsMainScreen");
+            ScreenDescription testscreen = ScreenDescription.Create(info, descriptions, "RollingBallsMainScreen", TimeSpan.FromDays(1));
 
             return testscreen;
         }

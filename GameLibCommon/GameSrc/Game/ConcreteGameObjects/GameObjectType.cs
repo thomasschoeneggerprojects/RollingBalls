@@ -6,6 +6,6 @@ namespace GameLibCommon.GameSrc.Game.ConcreteGameObjects
 {
     internal enum GameObjectType
     {
-        BALL, WALL, BLOCK, HOLE
+        BALL, WALL, BLOCK, HOLE, BACKGROUND, BUTTON
     }
 }

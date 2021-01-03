@@ -1,7 +1,7 @@
 ﻿using GameLibCommon.GameSrc;
 using GameLibCommon.GameSrc.ConcreteGameObjects;
 using GameLibCommon.GameSrc.ConcreteGameObjects.Builder;
-using GameLibCommon.GameSrc.Game.Type;
+using GameLibCommon.GameSrc.Game.GameScreens;
 using GameLibCommon.GameSrc.Input;
 using GameLibCommon.GameSrc.Screen;
 using Microsoft.Devices.Sensors;

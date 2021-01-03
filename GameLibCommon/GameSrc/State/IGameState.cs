@@ -11,7 +11,7 @@ namespace GameLibCommon.GameSrc.State
 
         void GoBack();
 
-        void Execute(IGameScreenExecution gameScreenExecution);
+        void Execute(IGameScreenSequenceExecution gameScreenSequenceExecution);
 
     }
 }

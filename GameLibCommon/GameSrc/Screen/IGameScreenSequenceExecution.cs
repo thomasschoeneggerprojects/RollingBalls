@@ -11,12 +11,12 @@ using Microsoft.Xna.Framework.Input;
 
 namespace GameLibCommon.GameSrc
 {
-    internal interface IGameScreenExecution    
+    internal interface IGameScreenSequenceExecution    
     {
-        public ExecutionState ExecutionState { get; set; }
+        public InnerExecutionState ExecutionState { get; set; }
 
-        void LoadContent(GraphicsDevice graphicsDevice, ContentManager contentManager, 
-            ScreenDescription screenDescription);
+        void LoadContent(GraphicsDevice graphicsDevice, ContentManager contentManager,
+            ScreenSequenceDescription screenSequenceDescription);
 
         void Update(GameTime gameTime, InputInformation inputInformation);
 
