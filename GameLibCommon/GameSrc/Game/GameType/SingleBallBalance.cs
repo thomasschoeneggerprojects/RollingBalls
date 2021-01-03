@@ -43,66 +43,6 @@ namespace GameLibCommon.GameSrc.Game.Type
                 gameObjects.Add(obj);
             }
 
-            //var textureBall = contentManager.Load<Texture2D>("ballblue");
-
-            //Ball ball = new Ball();
-            //ball.Initialize(new Vector2(180, 150), new GameObjectItem(textureBall, new Vector2(0, 0)));
-
-            //var wallLeft = GameObjectBuilder.Create()
-            //    .SetSize(WALL_THICKNESS, height)
-            //    .SetPosition(0, 0)
-            //    .SetOrientation(ObjectOrientation.Vertical)
-            //    .Build(contentManager);
-
-            //var wallRight = GameObjectBuilder.Create()
-            //    .SetSize(WALL_THICKNESS, height)
-            //    .SetPosition(width - WALL_THICKNESS, 0)
-            //    .SetOrientation(ObjectOrientation.Vertical)
-            //    .Build(contentManager);
-
-            //var wallTop = GameObjectBuilder.Create()
-            //    .SetSize(height - WALL_THICKNESS - WALL_THICKNESS, WALL_THICKNESS)
-            //    .SetPosition(WALL_THICKNESS, 0)
-            //    .SetOrientation(ObjectOrientation.Horizontal)
-            //    .Build(contentManager);
-
-            //var wallBottom = GameObjectBuilder.Create()
-            //    .SetSize(height - WALL_THICKNESS - WALL_THICKNESS, WALL_THICKNESS)
-            //    .SetPosition(WALL_THICKNESS, height - WALL_THICKNESS)
-            //    .SetOrientation(ObjectOrientation.Horizontal)
-            //    .Build(contentManager);
-
-            //var wallvert1 = GameObjectBuilder.Create()
-            //    .SetSize(WALL_THICKNESS * 2, 500)
-            //    .SetPosition(150, 200)
-            //    .SetOrientation(ObjectOrientation.Vertical)
-            //    .Build(contentManager);
-
-            //var wallvert2 = GameObjectBuilder.Create()
-            //    .SetSize(WALL_THICKNESS * 3, 500)
-            //    .SetPosition(700, 400)
-            //    .SetOrientation(ObjectOrientation.Vertical)
-            //    .Build(contentManager);
-
-            //var wallhorizontal1 = GameObjectBuilder.Create()
-            //   .SetSize(300, WALL_THICKNESS * 1.5f)
-            //   .SetPosition(300, 800)
-            //   .SetOrientation(ObjectOrientation.Horizontal)
-            //   .Build(contentManager);
-
-            //var wallhorizontal2 = GameObjectBuilder.Create()
-            //  .SetSize(300, WALL_THICKNESS * 1.5f)
-            //  .SetPosition(400, 1200)
-            //  .SetOrientation(ObjectOrientation.Horizontal)
-            //  .Build(contentManager);
-
-            //Texture2D textureblck1 = contentManager.Load<Texture2D>("blockredgray"); ;
-            //Block block1 = new Block();
-            //block1.DirectionDegree = 90;
-            //block1.Width = 50;
-            //block1.Height = 50;
-            //block1.Initialize(new Vector2(600, 700), new GameObjectItem(textureblck1, new Vector2(0, 0)));
-
             _gameMediator = new GameMediator(width, height);
             _gameMediator.Set(gameObjects.ToArray());
 

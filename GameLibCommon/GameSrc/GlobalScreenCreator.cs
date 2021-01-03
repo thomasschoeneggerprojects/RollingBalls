@@ -86,34 +86,7 @@ namespace GameLibCommon.GameSrc
                     Stability = 100000,
                     GameObjectType = GameObjectType.WALL
                 }
-
             };
-
-           
-            //var wallvert2 = GameObjectBuilder.Create()
-            //    .SetSize(WALL_THICKNESS * 3, 500)
-            //    .SetPosition(700, 400)
-            //    .SetOrientation(ObjectOrientation.Vertical)
-            //    .Build(contentManager);
-
-            //var wallhorizontal1 = GameObjectBuilder.Create()
-            //   .SetSize(300, WALL_THICKNESS * 1.5f)
-            //   .SetPosition(300, 800)
-            //   .SetOrientation(ObjectOrientation.Horizontal)
-            //   .Build(contentManager);
-
-            //var wallhorizontal2 = GameObjectBuilder.Create()
-            //  .SetSize(300, WALL_THICKNESS * 1.5f)
-            //  .SetPosition(400, 1200)
-            //  .SetOrientation(ObjectOrientation.Horizontal)
-            //  .Build(contentManager);
-
-            //Texture2D textureblck1 = contentManager.Load<Texture2D>("blockredgray"); ;
-            //Block block1 = new Block();
-            //block1.DirectionDegree = 90;
-            //block1.Width = 50;
-            //block1.Height = 50;
-            //block1.Initialize(new Vector2(600, 700), new GameObjectItem(textureblck1, new Vector2(0, 0)));
 
             ScreenDescription testscreen = ScreenDescription.Create(info, descriptions, "RollingBallsMainScreen");
 
