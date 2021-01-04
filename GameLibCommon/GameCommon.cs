@@ -33,7 +33,7 @@ namespace GameLibCommon
         protected override void Initialize()
         {
             _screenSizeInformation = ScreenSizeCalculator
-                .Calculate(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+                .Calculate(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height -100);
 
             _inputDataProvider = new InputDataReader();
             base.Initialize();
@@ -54,6 +54,7 @@ namespace GameLibCommon
 
         protected override void Draw(GameTime gameTime)
         {
+            GraphicsDevice.Clear(Color.BlueViolet);
             _gameScreenContext.Draw(gameTime, GraphicsDevice );
 
             base.Draw(gameTime);

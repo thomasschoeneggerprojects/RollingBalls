@@ -8,9 +8,9 @@ namespace GameLibCommon.GameSrc.Screen
     internal static class ScreenSizeCalculator 
     {
         private const float SCALE_FACTOR_SMALL = 1;
-        private const float SCALE_FACTOR_MEDIUM = 1.7f;
+        private const float SCALE_FACTOR_MEDIUM = 1.5f;
 
-        private const float SCALE_FACTOR_LARGE = 2;
+        private const float SCALE_FACTOR_LARGE = 1.8f;
 
         private const int WIDHT_SMALL = 500;
         private const int HEIGHT_SMALL = 1000;

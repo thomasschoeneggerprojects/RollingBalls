@@ -24,7 +24,7 @@ namespace GameLibCommon.GameSrc.Screen
 
         internal GameScreenExecutionId Id { get; private set; }
 
-         internal TimeSpan TimeOut { get; private set; }
+        internal TimeSpan TimeOut { get; private set; }
 
         internal ScreenSizeInformation ScreenSizeInformation { get; private set;}
 

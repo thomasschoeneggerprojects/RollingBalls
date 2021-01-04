@@ -17,24 +17,66 @@ namespace GameLibCommon.GameSrc
 
             return mainscreen;
         }
-        private const int WALL_THICKNESS = 10;
+        
         internal static ScreenDescription CreateTestLevelScreen(ScreenSizeInformation info)
         {
-            var width = (int)info.WidhtInnerScreen;
-            var height = (int)info.HeightInnerScreen;
+            float WALL_THICKNESS = 10 * info.ScaleFactor;
+
+            float width = info.WidhtInnerScreen;
+            float height = info.HeightInnerScreen;
 
             List<GameObjectDescription> descriptions = new List<GameObjectDescription>
             {
                 new GameObjectDescription()
                 {
-                    AssetName = "ballblue",
-                    CurrentPosition = new Vector2(200, 100),
-                    Width = 40,
-                    Height = 40, 
+                    AssetName = "wallvertical",
+                    CurrentPosition = new Vector2(150, 200),
+                    Width = WALL_THICKNESS*info.ScaleFactor,
+                    Height = 500*info.ScaleFactor,
                     ObjectOrientation = ObjectOrientation.Vertical,
-                    Stability = 100,
-                    GameObjectType = GameObjectType.BALL
+                    Stability = 100000,
+                    GameObjectType = GameObjectType.WALL
                 },
+                new GameObjectDescription()
+                {
+                    AssetName = "blockredgray",
+                    CurrentPosition = new Vector2(350, 700),
+                    Width = 50*info.ScaleFactor,
+                    Height = 50*info.ScaleFactor,
+                    ObjectOrientation = ObjectOrientation.Vertical,
+                    Stability = 1000,
+                    GameObjectType = GameObjectType.BLOCK
+                }
+            };
+            descriptions.AddRange(CreateArenaBorder(width, height, info.ScaleFactor));
+            descriptions.Add(CreateBall(info.ScaleFactor));
+
+            ScreenDescription testscreen = ScreenDescription.Create(info, descriptions, "BackgroundMamor", 
+                WellKnownGameScreenExecutions.RUNNING_GAME_BALANCE_SCREEN, TimeSpan.FromDays(1));
+
+            return testscreen;
+        }
+
+        internal static GameObjectDescription CreateBall(float scalefactor)
+        {
+            var gobj = new GameObjectDescription()
+            {
+                AssetName = "ballblue",
+                CurrentPosition = new Vector2(200 * scalefactor, 100 * scalefactor),
+                Width = 30 * scalefactor,
+                Height = 30 * scalefactor,
+                ObjectOrientation = ObjectOrientation.Vertical,
+                Stability = 100,
+                GameObjectType = GameObjectType.BALL
+            };
+            return gobj;
+        }
+
+        internal static List<GameObjectDescription> CreateArenaBorder(float width, float height, float scalefactor)
+        {
+            float WALL_THICKNESS = 10 * scalefactor;
+            List<GameObjectDescription> descriptions = new List<GameObjectDescription>
+            {
                 // Left
                 new GameObjectDescription()
                 {
@@ -78,32 +120,10 @@ namespace GameLibCommon.GameSrc
                     ObjectOrientation = ObjectOrientation.Horizontal,
                     Stability = 100000,
                     GameObjectType = GameObjectType.WALL
-                },
-                new GameObjectDescription()
-                {
-                    AssetName = "wallvertical",
-                    CurrentPosition = new Vector2(150, 200),
-                    Width = WALL_THICKNESS,
-                    Height = 500,
-                    ObjectOrientation = ObjectOrientation.Vertical,
-                    Stability = 100000,
-                    GameObjectType = GameObjectType.WALL
-                },
-                new GameObjectDescription()
-                {
-                    AssetName = "blockredgray",
-                    CurrentPosition = new Vector2(600, 700),
-                    Width = 50,
-                    Height = 50,
-                    ObjectOrientation = ObjectOrientation.Vertical,
-                    Stability = 1000,
-                    GameObjectType = GameObjectType.BLOCK
                 }
+
             };
-
-            ScreenDescription testscreen = ScreenDescription.Create(info, descriptions, "BackgroundMamor", WellKnownGameScreenExecutions.RUNNING_GAME_BALANCE_SCREEN, TimeSpan.FromDays(1));
-
-            return testscreen;
+            return descriptions;
         }
     }
 }

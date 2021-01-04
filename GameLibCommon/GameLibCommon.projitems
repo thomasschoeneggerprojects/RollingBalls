@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)GameCommon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Controls\Button.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\Area.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\ConcreteGameObjects\Ball.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Game\ConcreteGameObjects\Block.cs" />
@@ -26,6 +27,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Screen\GameScreens\MainMenuSequence.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Screen\GameScreens\SingleBallBalanceGame.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Screen\GameScreens\SubScreens\GameScreenExecutionBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Screen\GameScreens\SubScreens\GameStatistics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Screen\GameScreens\SubScreens\LoadGame.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Screen\GlobalScreenDescriptionCreator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Input\IInputDataProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameSrc\Input\InputDataReader.cs" />

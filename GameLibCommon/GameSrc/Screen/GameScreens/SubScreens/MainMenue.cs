@@ -46,7 +46,7 @@ namespace GameLibCommon.GameSrc.Screen
 
         public void  Draw(GameTime gameTime, GraphicsDevice graphicsDevice)
         {
-            graphicsDevice.Clear(Color.Wheat);
+            
 
             _spriteBatch.Begin(SpriteSortMode.Immediate);
 

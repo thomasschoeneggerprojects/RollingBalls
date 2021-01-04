@@ -61,7 +61,6 @@ namespace GameLibCommon.GameSrc.Screen.GameScreens.SubScreens
 
         public virtual void Draw(GameTime gameTime, GraphicsDevice graphicsDevice)
         {
-            graphicsDevice.Clear(Color.Wheat);
             _gameMediator.DrawScreen(_spriteBatch);
         }
 
