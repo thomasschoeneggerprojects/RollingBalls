@@ -19,13 +19,13 @@ namespace GameLibCommon.GameSrc.Screen
         {
             if (width/ WIDHT_SMALL > SCALE_FACTOR_LARGE && height/HEIGHT_SMALL > SCALE_FACTOR_LARGE)
             {
-                return CreateScreenInfo(WIDHT_SMALL, HEIGHT_SMALL, SCALE_FACTOR_LARGE,
+                return CreateScreenInfo(WIDHT_SMALL, HEIGHT_SMALL, width, height, SCALE_FACTOR_LARGE,
                     CalculateOffset(width, height, SCALE_FACTOR_LARGE));
             }
 
             if (width / WIDHT_SMALL > SCALE_FACTOR_MEDIUM && height / HEIGHT_SMALL > SCALE_FACTOR_MEDIUM)
             {
-                return CreateScreenInfo(WIDHT_SMALL, HEIGHT_SMALL, SCALE_FACTOR_MEDIUM,
+                return CreateScreenInfo(WIDHT_SMALL, HEIGHT_SMALL, width, height, SCALE_FACTOR_MEDIUM,
                     CalculateOffset(width, height, SCALE_FACTOR_MEDIUM));
             }
 
@@ -34,7 +34,7 @@ namespace GameLibCommon.GameSrc.Screen
                 new ArgumentException($"screen size widht:{width}, height:{height} not supported. Device is to small.");
             }
 
-            return CreateScreenInfo(WIDHT_SMALL, HEIGHT_SMALL, SCALE_FACTOR_SMALL,
+            return CreateScreenInfo(WIDHT_SMALL, HEIGHT_SMALL, width, height, SCALE_FACTOR_SMALL,
                     CalculateOffset(width, height, SCALE_FACTOR_SMALL));
         }
 
@@ -44,9 +44,9 @@ namespace GameLibCommon.GameSrc.Screen
         }
 
 
-        private static ScreenSizeInformation CreateScreenInfo(float width, float height, float scale, Vector2 offsetToOutherScreen)
+        private static ScreenSizeInformation CreateScreenInfo(float width, float height, float widthOuter, float heightOuter, float scale, Vector2 offsetToOutherScreen)
         {
-            var screenInfo = ScreenSizeInformation.Create(width * scale, height * scale, scale, offsetToOutherScreen);
+            var screenInfo = ScreenSizeInformation.Create(width * scale, height * scale, widthOuter, heightOuter, scale, offsetToOutherScreen);
             return screenInfo;
         }
 

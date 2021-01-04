@@ -40,6 +40,7 @@ namespace GameLibCommon.GameSrc.State
 
             _gameScreenSequenceExecution.LoadContent(Context.GraphicsDevice, Context.ContentManager, screenSequence);
         }
+
         bool _isInGame = false;
         public void Update(GameTime gameTime, InputInformation inputInformation)
         {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using GameLibCommon.GameSrc.Controls;
 using GameLibCommon.GameSrc.Input;
 using GameLibCommon.GameSrc.State;
 using Microsoft.Xna.Framework;
@@ -15,9 +16,14 @@ namespace GameLibCommon.GameSrc.Screen
 
         private Texture2D _background;
         private SpriteFont _font;
-
-        private int _screenWidth;
+        private Texture2D _button;
+        private ScreenSizeInformation _screenSizeInformation;
         private int _screenHeight;
+
+        private Button _BtnStart;
+        private Button _BtnEdit;
+        private Button _BtnStatistic;
+        private Button _BtnMultiplayer;
 
         public InnerExecutionState ExecutionState { get; set; }
 
@@ -26,14 +32,26 @@ namespace GameLibCommon.GameSrc.Screen
         {
             ExecutionState = InnerExecutionState.INIT;
 
-            _screenWidth = (int)screenDescription.ScreenSizeInformation.WidhtInnerScreen;
-            _screenHeight = (int)screenDescription.ScreenSizeInformation.HeightInnerScreen;
+            _screenSizeInformation = screenDescription.ScreenSizeInformation;
 
             _spriteBatch = new SpriteBatch(graphicsDevice);
 
             _background = contentManager.Load<Texture2D>(screenDescription.AssetNameBackground);
 
             _font = contentManager.Load<SpriteFont>("Labels/LabelLarge");
+
+            // Pos Buttons
+            var buttonspace = 10;
+            var buttonWidth = (_screenSizeInformation.WidhtOuterScreen - 3 * buttonspace) / 2;
+            var buttonHeigth = (_screenSizeInformation.HeightOuterScreen/2 - 2 * buttonspace) / 2;
+
+            _button = contentManager.Load<Texture2D>("RoundRectangle");
+
+            _BtnStart = Button.Create(buttonspace, _screenSizeInformation.HeightOuterScreen/2, buttonWidth, buttonHeigth);
+            _BtnMultiplayer = Button.Create(buttonspace, _screenSizeInformation.HeightOuterScreen/ 2 + buttonHeigth + buttonspace, buttonWidth, buttonHeigth);
+            _BtnEdit = Button.Create(buttonspace + buttonWidth + buttonspace, _screenSizeInformation.HeightOuterScreen / 2, buttonWidth, buttonHeigth);
+            _BtnStatistic= Button.Create(buttonspace + buttonWidth + buttonspace, _screenSizeInformation.HeightOuterScreen / 2 + buttonHeigth, buttonWidth, buttonHeigth);
+            
         }
 
         private InputInformation _inputInformation;
@@ -44,22 +62,26 @@ namespace GameLibCommon.GameSrc.Screen
             _inputInformation = inputInformation;
         }
 
-        public void  Draw(GameTime gameTime, GraphicsDevice graphicsDevice)
+        public void Draw(GameTime gameTime, GraphicsDevice graphicsDevice)
         {
-            
-
             _spriteBatch.Begin(SpriteSortMode.Immediate);
 
-            _spriteBatch.Draw(_background, new Rectangle(1, 1, _screenWidth, _screenHeight), Color.White);
+            _spriteBatch.Draw(_background, new Rectangle(0, 0, (int)_screenSizeInformation.WidhtOuterScreen, (int)_screenSizeInformation.HeightOuterScreen), Color.White);
 
-            DrawCentered(_spriteBatch, _screenWidth, _screenHeight, _inputInformation.Acceleration.X, _inputInformation.Acceleration.Y);
+            DrawButtons(_spriteBatch, (int)_screenSizeInformation.WidhtOuterScreen, (int)_screenSizeInformation.HeightOuterScreen,
+                _inputInformation.Acceleration.X, _inputInformation.Acceleration.Y);
 
             _spriteBatch.End();
         }
 
-        private void DrawCentered(SpriteBatch spriteBatch, int screenWidth, int screenHeight, float x, float y)
+        private void DrawButtons(SpriteBatch spriteBatch, int screenWidth, int screenHeight, float x, float y)
         {
-            spriteBatch.DrawString(_font, $"Touch to start {x}/{y}", new Vector2(0, screenHeight/3*2), Color.Black);
+            _spriteBatch.Draw(_button, _BtnStart.Bounds, Color.White);
+            _spriteBatch.Draw(_button, _BtnMultiplayer.Bounds, Color.White);
+            _spriteBatch.Draw(_button, _BtnEdit.Bounds, Color.White);
+            _spriteBatch.Draw(_button, _BtnStatistic.Bounds, Color.White);
+
+            spriteBatch.DrawString(_font, $"Start", _BtnStart.Position, Color.Black);
         }
 
     }
