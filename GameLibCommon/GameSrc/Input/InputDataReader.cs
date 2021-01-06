@@ -8,7 +8,7 @@ using System.Text;
 
 namespace GameLibCommon.GameSrc.Input
 {
-    internal class InputDataReader
+    internal class InputDataReader : IInputDataProvider
     {
         private Accelerometer _accelerometer;
 
@@ -41,12 +41,11 @@ namespace GameLibCommon.GameSrc.Input
 
         InputInformation _info;
 
-        internal InputInformation Update()
+        InputInformation IInputDataProvider.Update()
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
-                //GamePad.res;
                 lock (_lock)
                 {
                     _info.Exit(true);
@@ -58,7 +57,6 @@ namespace GameLibCommon.GameSrc.Input
             var touchArea = new Rectangle(0, 0, 0, 0);
             if (touchCollection.Count > 0)
             {
-                //Only Fire Select Once it's been released
                 if (touchCollection[0].State == TouchLocationState.Moved ||
                     touchCollection[0].State == TouchLocationState.Pressed)
                 {

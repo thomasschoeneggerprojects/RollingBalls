@@ -1,9 +1,10 @@
 ﻿using GameLibCommon.GameSrc;
 using GameLibCommon.GameSrc.ConcreteGameObjects;
 using GameLibCommon.GameSrc.ConcreteGameObjects.Builder;
-using GameLibCommon.GameSrc.Game.Types;
+using GameLibCommon.GameSrc.Game.GameScreens;
 using GameLibCommon.GameSrc.Input;
-using GameLibCommon.GameSrc.Menue.Screens;
+using GameLibCommon.GameSrc.Screen;
+using GameLibCommon.GameSrc.StateHandling;
 using Microsoft.Devices.Sensors;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -16,76 +17,45 @@ namespace GameLibCommon
     public class GameCommon : Game
     {
         private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
 
-        private BaseGameScreen _gameScreen;
+        private GameScreenContext _gameScreenContext;
 
-        //private SingleBallBalanceGame _singleBallBalance;
-
-        //private MainMenue _mainMenue;
-
-        private InputDataReader _inputDataReader;
-
-        //private GameMediator _gameMediator;
+        private IInputDataProvider _inputDataProvider;
+        private ScreenSizeInformation _screenSizeInformation;
 
         public GameCommon()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-
         }
 
         protected override void Initialize()
         {
-            _gameScreen = new MainMenue();
+            _screenSizeInformation = ScreenSizeCalculator
+                .Calculate(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height -100);
 
-            _inputDataReader = new InputDataReader();
+            _inputDataProvider = new InputDataReader();
             base.Initialize();
         }
 
-        private const int WALL_THICKNESS = 20;
         protected override void LoadContent()
         {
-            _gameScreen.LoadContent(GraphicsDevice, Content);
+            _gameScreenContext = new GameScreenContext(GraphicsDevice, Content, _screenSizeInformation);
         }
 
-        bool _isInGame = false;
         protected override void Update(GameTime gameTime)
         {
-            var currentInputInfo = _inputDataReader.Update();
+            var currentInputInfo = _inputDataProvider.Update();
 
-            
-            if (currentInputInfo.ExitPressed)
-            {
-                if (_isInGame)
-                {
-                    _gameScreen = new MainMenue();
-                    LoadContent();
-                    _isInGame = false;
-                }
-                else 
-                {
-                    _isInGame = false;
-                    Exit();
-                }
-            }
-
-            if (currentInputInfo.ScreenTouched && !_isInGame)
-            {
-                _gameScreen = new SingleBallBalanceGame();
-                LoadContent();
-                _isInGame = true;
-            }
-
-            _gameScreen.Update(gameTime, currentInputInfo);
+            _gameScreenContext.Update(gameTime, currentInputInfo);
             base.Update(gameTime);
         }
 
-
         protected override void Draw(GameTime gameTime)
         {
-            _gameScreen.Draw(gameTime, GraphicsDevice );
+            GraphicsDevice.Clear(Color.BlueViolet);
+            _gameScreenContext.Draw(gameTime, GraphicsDevice );
 
             base.Draw(gameTime);
         }

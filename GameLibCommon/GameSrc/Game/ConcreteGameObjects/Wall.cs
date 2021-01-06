@@ -11,7 +11,7 @@ namespace GameLibCommon.GameSrc.ConcreteGameObjects
     {
         public Wall()
         {
-            TextureDescriptions.Add("wall", typeof(Texture2D));
+            AssetName = "wallhorizontal";
         }
 
         internal override void Initialize(Vector2 currentPosition, params GameObjectItem[] loadedGameObjectItems)

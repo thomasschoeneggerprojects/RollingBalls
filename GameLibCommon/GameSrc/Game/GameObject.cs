@@ -12,7 +12,7 @@ namespace GameLibCommon.GameSrc.Game
         {
             Uuid = Guid.NewGuid();
             GameObjectItems = new List<GameObjectItem>();
-            TextureDescriptions = new Dictionary<string, Type>();
+            
             Width = 1;
             Height = 1;
             Stability = 100000;
@@ -46,7 +46,7 @@ namespace GameLibCommon.GameSrc.Game
             Bounds = new Rectangle((int)_currentPosition.X, (int)_currentPosition.Y, (int)Width, (int)Height);
         }
 
-        public Dictionary<string, Type> TextureDescriptions { get; protected set; }
+        public string AssetName { get; protected set; }
 
         public double _width;
         public double Width {

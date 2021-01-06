@@ -10,8 +10,8 @@ namespace GameLibCommon.GameSrc.Game.Handler
         const double conversion = 0.01745581; 
         internal void Handle(List<GameObject> gameObjects, InputInformation inputInformation)
         {
-            double newDirection = calcNewAngle(inputInformation);
-            double newAccel = calcNewAccelaration(inputInformation);
+            double newDirection = CalcNewAngle(inputInformation);
+            double newAccel = CalcNewAccelaration(inputInformation);
 
             foreach(GameObject gameObject in gameObjects)
             {
@@ -25,7 +25,7 @@ namespace GameLibCommon.GameSrc.Game.Handler
             }
         }
 
-        private double calcNewAngle(InputInformation inputInformation)
+        private double CalcNewAngle(InputInformation inputInformation)
         {
             double result = 0;
 
@@ -59,7 +59,7 @@ namespace GameLibCommon.GameSrc.Game.Handler
             return result;
         }
 
-        private double calcNewAccelaration(InputInformation inputInformation)
+        private double CalcNewAccelaration(InputInformation inputInformation)
         {
             double cY = Math.Round(inputInformation.Acceleration.Y / conversion, 5);
             double cX = Math.Round(inputInformation.Acceleration.X / conversion, 5);
