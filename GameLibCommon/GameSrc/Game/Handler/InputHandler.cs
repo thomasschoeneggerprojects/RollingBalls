@@ -36,11 +36,26 @@ namespace GameLibCommon.GameSrc.Game.Handler
             {
                 if (cY < 0)
                 {
-                    result = Math.Abs(cY) + 90;
+                    if (cX <= cY)
+                    {
+                        result = calcTest(cX, cY, 135, -1);
+                    }
+                    else
+                    {
+                        result = calcTest(cX, cY, 135, 1);
+                    }                    
                 }
                 else
                 {
-                    result = Math.Abs(cY);
+                    if (cX <= cY)
+                    {
+                        result = calcTest(cX, cY, 45, 1);
+                    }
+                    else
+                    {
+                        result = calcTest(cX, cY, 45, -1);
+                    }                    
+
                 }
 
             }
@@ -48,15 +63,41 @@ namespace GameLibCommon.GameSrc.Game.Handler
             {
                 if(cY < 0)
                 {
-                    result = Math.Abs(cY) + 180;
+                    if(cX <= cY)
+                    {
+                        result = calcTest(cX, cY, 225, -1);
+                    }
+                    else
+                    {
+                        result = calcTest(cX, cY, 225, 1);
+                    }                    
                 }
                 else
                 {
-                    result = 360 - Math.Abs(cY);
+                    if (cX <= cY)
+                    {
+                        result = calcTest(cX, cY, 315, 1);
+                    }
+                    else
+                    {
+                        result = calcTest(cX, cY, 315, -1);
+                    }
+                    
                 }
             }
 
             return result;
+        }
+
+        private double calcTest(double cX, double cY, double startingPoint, int directionValue)
+        {
+            double deflection = 45;
+            if (((Math.Abs(cX) - Math.Abs(cY)) * 10) < 45)
+            {
+                deflection = ((Math.Abs(cX) - Math.Abs(cY)) * 10);
+            }
+
+            return startingPoint + (deflection * directionValue);
         }
 
         private double CalcNewAccelaration(InputInformation inputInformation)

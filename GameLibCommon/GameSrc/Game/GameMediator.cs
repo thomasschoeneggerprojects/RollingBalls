@@ -49,9 +49,9 @@ namespace GameLibCommon.GameSrc.Game
 
         #endregion
         public void Refresh(SpriteBatch spriteBatch, InputInformation inputInformation)
-        {
-            HandleInput(_gameObjects, inputInformation);
+        {            
             CalculatePhysics(_gameObjects);
+            HandleInput(_gameObjects, inputInformation);
         }
 
         private InputInformation _inputInformation;
