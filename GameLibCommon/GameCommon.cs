@@ -26,6 +26,7 @@ namespace GameLibCommon
         public GameCommon()
         {
             _graphics = new GraphicsDeviceManager(this);
+            _graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft;
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
