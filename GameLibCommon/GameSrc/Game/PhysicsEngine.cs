@@ -30,11 +30,14 @@ namespace GameLibCommon.GameSrc.Game
                             {
                                 gameObjectArray[i].DirectionDegree
                                     = CalculateReDirection(gameObjectArray[i].DirectionDegree, gameObjectArray[j].DirectionDegree);
+
+                                gameObjectArray[i].Speed = gameObjectArray[j].Speed / 2;
                             }
                             if (gameObjectArray[j].Stability < 10000)
                             {
                                 gameObjectArray[j].DirectionDegree
                                     = CalculateReDirection(gameObjectArray[j].DirectionDegree, gameObjectArray[i].DirectionDegree);
+                                gameObjectArray[j].Speed = gameObjectArray[j].Speed / 2;
                             }
                         }
 

@@ -91,9 +91,9 @@ namespace GameLibCommon.GameSrc.Game.Handler
         private double calcTest(double cX, double cY, double startingPoint, int directionValue)
         {
             double deflection = 45;
-            if (((Math.Abs(cX) - Math.Abs(cY)) * 10) < 45)
+            if (Math.Abs((Math.Abs(cX) - Math.Abs(cY))) < 45)
             {
-                deflection = ((Math.Abs(cX) - Math.Abs(cY)) * 10);
+                deflection = Math.Abs(Math.Abs(cX) - Math.Abs(cY));
             }
 
             return startingPoint + (deflection * directionValue);
@@ -116,11 +116,11 @@ namespace GameLibCommon.GameSrc.Game.Handler
             }
             else if(distance > 90 && distance < 180)
             {
-                gameObject.Speed = (gameObject.Speed + acceleration / 2);
+                gameObject.Speed = ((gameObject.Speed + acceleration) / 2);
             }
             else if (distance > 180 && distance < 270)
             {
-                gameObject.Speed = (gameObject.Speed + acceleration / 2);
+                gameObject.Speed = ((gameObject.Speed + acceleration) / 2);
             }
             else if (distance > 270 && distance < 360)
             {
