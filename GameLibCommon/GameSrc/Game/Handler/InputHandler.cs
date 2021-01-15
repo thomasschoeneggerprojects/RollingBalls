@@ -38,6 +38,32 @@ namespace GameLibCommon.GameSrc.Game.Handler
                 {
                     if (cX <= cY)
                     {
+                        result = calcTest(cX, cY, 45, 1);
+                    }
+                    else
+                    {
+                        result = calcTest(cX, cY, 45, -1);
+                    }
+                }
+                else
+                {
+                    if (Math.Abs(cX) <= Math.Abs(cY))
+                    {
+                        result = calcTest(cX, cY, 315, -1);
+                    }
+                    else
+                    {
+                        result = calcTest(cX, cY, 315, 1);
+                    }                 
+
+                }
+            }
+            else
+            {
+                if(cY < 0)
+                {
+                    if(Math.Abs(cX) <= Math.Abs(cY))
+                    {
                         result = calcTest(cX, cY, 135, -1);
                     }
                     else
@@ -47,40 +73,13 @@ namespace GameLibCommon.GameSrc.Game.Handler
                 }
                 else
                 {
-                    if (cX <= cY)
-                    {
-                        result = calcTest(cX, cY, 45, 1);
-                    }
-                    else
-                    {
-                        result = calcTest(cX, cY, 45, -1);
-                    }                    
-
-                }
-
-            }
-            else
-            {
-                if(cY < 0)
-                {
-                    if(cX <= cY)
-                    {
-                        result = calcTest(cX, cY, 225, -1);
-                    }
-                    else
+                    if (Math.Abs(cX) <= Math.Abs(cY))
                     {
                         result = calcTest(cX, cY, 225, 1);
-                    }                    
-                }
-                else
-                {
-                    if (cX <= cY)
-                    {
-                        result = calcTest(cX, cY, 315, 1);
                     }
                     else
                     {
-                        result = calcTest(cX, cY, 315, -1);
+                        result = calcTest(cX, cY, 225, -1);
                     }
                     
                 }
