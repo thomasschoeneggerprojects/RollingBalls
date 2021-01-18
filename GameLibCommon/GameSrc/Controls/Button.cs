@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace GameLibCommon.GameSrc.Controls
 {
@@ -15,13 +16,21 @@ namespace GameLibCommon.GameSrc.Controls
             Bounds = new Rectangle((int)x, (int)y, (int)width, (int)height);
         }
 
+        internal Func<bool> OnClick { get; set; }
+
         internal Vector2 Position { get; set; }
 
         internal Rectangle Bounds { get; set; }
 
         public void Update(InputInformation inputInformation)
         {
-            
+            if (inputInformation.ScreenTouched)
+            {
+                if (inputInformation.LastTouchArea.Intersects(Bounds))
+                {
+                    OnClick.Invoke();
+                }
+            }
         }
 
         public void Draw(GraphicsDevice graphicsDevice)

@@ -51,7 +51,6 @@ namespace GameLibCommon.GameSrc.Screen
             _BtnMultiplayer = Button.Create(buttonspace, _screenSizeInformation.HeightOuterScreen/ 2 + buttonHeigth + buttonspace, buttonWidth, buttonHeigth);
             _BtnEdit = Button.Create(buttonspace + buttonWidth + buttonspace, _screenSizeInformation.HeightOuterScreen / 2, buttonWidth, buttonHeigth);
             _BtnStatistic= Button.Create(buttonspace + buttonWidth + buttonspace, _screenSizeInformation.HeightOuterScreen / 2 + buttonHeigth, buttonWidth, buttonHeigth);
-            
         }
 
         private InputInformation _inputInformation;
@@ -83,6 +82,5 @@ namespace GameLibCommon.GameSrc.Screen
 
             spriteBatch.DrawString(_font, $"Start", _BtnStart.Position, Color.Black);
         }
-
     }
 }
